@@ -1,0 +1,10 @@
+{
+  "name": "directorio",
+  "version": "1.0.0",
+  "title": "Directorio",
+  "author": "Mr.SmoothieHuman",
+  "factorio_version": "2.0",
+  "dependencies": ["base >= 2.0"],
+  "homepage": "https://discord.gg/64GKrqpyJ2",
+  "description": "Stupid thought expirement, what if all 'redundant' (one input, one output) recipe were removed from Factorio?"
+}
