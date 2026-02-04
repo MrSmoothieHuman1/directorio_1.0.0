@@ -251,6 +251,8 @@ data.raw["recipe"]["refined-concrete"].ingredients =
   {type = "fluid", name = "water", amount = 100}
 }
 
+data.raw["technology"]["steel-axe"].research_trigger.item = "iron-ore"
+
 if mods["space-age"] then
     
     double_hide(data.raw["recipe"]["lithium-plate"])
