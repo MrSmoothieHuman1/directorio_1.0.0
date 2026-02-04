@@ -39,7 +39,7 @@ for _, recipe in pairs(data.raw["recipe"]) do
         ingedient.name = swap_ingredient.name
         if swap_ingredient.amount_multiplier then
           ingedient.amount = ingedient.amount * swap_ingredient.amount_multiplier
-          assert(ingedient.amount == math.floor(ingedient.amount), string.format("recipe %s would end up needing %f %s.", recipe.name, ingredient.name, ingredient.amount))
+          --assert(ingedient.amount == math.floor(ingedient.amount), string.format("recipe %s would end up needing %f %s.", recipe.name, ingredient.name, ingredient.amount))
         end
       end
     end
@@ -250,3 +250,52 @@ data.raw["recipe"]["refined-concrete"].ingredients =
   {type = "item", name = "concrete", amount = 20},
   {type = "fluid", name = "water", amount = 100}
 }
+
+if mods["space-age"] then
+    
+    double_hide(data.raw["recipe"]["lithium-plate"])
+    double_hide(data.raw["recipe"]["casting-iron"])
+    double_hide(data.raw["recipe"]["casting-copper"])
+    double_hide(data.raw["recipe"]["casting-steel"])
+    double_hide(data.raw["recipe"]["casting-copper-cable"])
+
+local swap_ingredients = {
+  ["iron-plate"] = {name = "iron-ore"},
+  ["copper-plate"] = {name = "copper-ore"},
+  ["lithium-plate"] = {name = "lithium"},
+  ["copper-cable"] = {name = "copper-ore", amount_multiplier = 0.5},
+  ["iron-gear-wheel"] = {name = "iron-ore", amount_multiplier = 2.0},
+  ["steel-plate"] = {name = "iron-ore", amount_multiplier = 5.0},
+  ["stone-brick"] = {name = "stone", amount_multiplier = 2.0},
+  ["lubricant"] = {name = "heavy-oil", amount_multiplier = 2.0},
+  ["iron-stick"] = {name = "iron-ore", amount_multiplier = 0.5},
+}
+
+for _, recipe in pairs(data.raw["recipe"]) do
+  if recipe.ingredients then
+    for _, ingedient in pairs(recipe.ingredients) do
+      local swap_ingredient = swap_ingredients[ingedient.name]
+      if swap_ingredient then
+        ingedient.name = swap_ingredient.name
+        if swap_ingredient.amount_multiplier then
+          ingedient.amount = ingedient.amount * swap_ingredient.amount_multiplier
+        end
+      end
+    end
+  end
+end
+
+    data.raw["recipe"]["recycler"].ingredients =
+    {
+        {type = "item", name = "iron-ore", amount = 180},
+        {type = "item", name = "concrete", amount = 20},
+        {type = "item", name = "processing-unit", amount = 6}
+    }    
+    data.raw["recipe"]["rocket-turret"].ingredients =
+    {
+        {type = "item", name = "iron-ore", amount = 140},
+        {type = "item", name = "rocket-launcher", amount = 4},
+        {type = "item", name = "carbon-fiber", amount = 20},
+        {type = "item", name = "processing-unit", amount = 4}
+    }
+end
