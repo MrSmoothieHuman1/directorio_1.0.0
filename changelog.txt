@@ -1,0 +1,6 @@
+---------------------------------------------------------------------------------------------------
+Version: 1.0.1
+Date: 2026-02-04
+
+  Additions:
+    - Added space age compatability. I dont plan to work on modded space age compat, but we'll see.
